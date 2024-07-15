@@ -1,7 +1,6 @@
-// src/todo/todo.entity.ts
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('Todo')
+@Entity()
 export class Todo {
   @PrimaryGeneratedColumn()
   id: number;
@@ -9,6 +8,9 @@ export class Todo {
   @Column()
   title: string;
 
+  @Column()
+  description: string;
+
   @Column({ default: false })
-  completed: boolean;
+  isDone: boolean;
 }
