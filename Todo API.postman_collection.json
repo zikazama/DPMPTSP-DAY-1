@@ -1,128 +1,218 @@
 {
 	"info": {
-		"_postman_id": "c8364663-c6dd-4c40-9e25-286020e14d47",
-		"name": "Todo API",
-		"description": "Koleksi Postman untuk API CRUD Todo",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "8055761",
-		"_collection_link": "https://zyborg.postman.co/workspace/Team-Workspace~7f717194-10bd-4779-85f6-02532d479bac/collection/8055761-c8364663-c6dd-4c40-9e25-286020e14d47?action=share&source=collection_link&creator=8055761"
+	  "name": "Todo and User Controller Collection",
+	  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
+	  {
+		"name": "Todo",
+		"item": [
+		  {
 			"name": "Create Todo",
 			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"title\": \"Learn NestJS\",\n  \"description\": \"Study the documentation and tutorials\",\n  \"isDone\": false\n}"
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer <your_jwt_token>",
+				  "type": "text"
 				},
-				"url": {
-					"raw": "http://localhost:3000/todo",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todo"
-					]
+				{
+				  "key": "Content-Type",
+				  "value": "application/json",
+				  "type": "text"
 				}
-			},
-			"response": []
-		},
-		{
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n    \"title\": \"Sample Todo\",\n    \"description\": \"This is a sample todo item\"\n}"
+			  },
+			  "url": {
+				"raw": "http://localhost:3000/todo",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "3000",
+				"path": [
+				  "todo"
+				]
+			  }
+			}
+		  },
+		  {
 			"name": "Get All Todos",
 			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/todo",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todo"
-					]
+			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer <your_jwt_token>",
+				  "type": "text"
 				}
-			},
-			"response": []
-		},
-		{
+			  ],
+			  "url": {
+				"raw": "http://localhost:3000/todo",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "3000",
+				"path": [
+				  "todo"
+				]
+			  }
+			}
+		  },
+		  {
 			"name": "Get Todo by ID",
 			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/todo/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todo",
-						"1"
-					]
+			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer <your_jwt_token>",
+				  "type": "text"
 				}
-			},
-			"response": []
-		},
-		{
+			  ],
+			  "url": {
+				"raw": "http://localhost:3000/todo/1",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "3000",
+				"path": [
+				  "todo",
+				  "1"
+				]
+			  }
+			}
+		  },
+		  {
 			"name": "Update Todo",
 			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"title\": \"Learn NestJS Updated\",\n  \"description\": \"Updated description\",\n  \"isDone\": true\n}"
+			  "method": "PATCH",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer <your_jwt_token>",
+				  "type": "text"
 				},
-				"url": {
-					"raw": "http://localhost:3000/todo/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todo",
-						"1"
-					]
+				{
+				  "key": "Content-Type",
+				  "value": "application/json",
+				  "type": "text"
 				}
-			},
-			"response": []
-		},
-		{
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n    \"title\": \"Updated Todo\",\n    \"description\": \"This is an updated todo item\"\n}"
+			  },
+			  "url": {
+				"raw": "http://localhost:3000/todo/1",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "3000",
+				"path": [
+				  "todo",
+				  "1"
+				]
+			  }
+			}
+		  },
+		  {
 			"name": "Delete Todo",
 			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/todo/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todo",
-						"1"
-					]
+			  "method": "DELETE",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer <your_jwt_token>",
+				  "type": "text"
 				}
-			},
-			"response": []
-		}
+			  ],
+			  "url": {
+				"raw": "http://localhost:3000/todo/1",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "3000",
+				"path": [
+				  "todo",
+				  "1"
+				]
+			  }
+			}
+		  }
+		]
+	  },
+	  {
+		"name": "User",
+		"item": [
+		  {
+			"name": "Register User",
+			"request": {
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Content-Type",
+				  "value": "application/json",
+				  "type": "text"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n    \"username\": \"newuser\",\n    \"password\": \"password123\"\n}"
+			  },
+			  "url": {
+				"raw": "http://localhost:3000/user/register",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "3000",
+				"path": [
+				  "user",
+				  "register"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Login User",
+			"request": {
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Content-Type",
+				  "value": "application/json",
+				  "type": "text"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n    \"username\": \"newuser\",\n    \"password\": \"password123\"\n}"
+			  },
+			  "url": {
+				"raw": "http://localhost:3000/user/login",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "3000",
+				"path": [
+				  "user",
+				  "login"
+				]
+			  }
+			}
+		  }
+		]
+	  }
 	]
-}
+  }
+  

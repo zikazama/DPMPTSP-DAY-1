@@ -1,15 +1,18 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
-import { UserControllerController } from './user-controller/user-controller.controller';
-import { UserServiceService } from './user-service/user-service.service';
 import { TodoModule } from './todo/todo.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { JwtModule, JwtService } from '@nestjs/jwt';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
+    JwtModule.register({
+      secret: 'rahasia',
+      signOptions: { expiresIn: '60s' },
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -27,8 +30,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       }),
       inject: [ConfigService],
     }),
-    UserModule, TodoModule],
-  controllers: [AppController, UserControllerController],
-  providers: [AppService, UserServiceService],
+     TodoModule,
+     UserModule],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule { }
