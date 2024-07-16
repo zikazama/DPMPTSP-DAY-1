@@ -4,6 +4,7 @@ import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { RolesGuard } from 'src/user/guard/jwt.guard';
 import { Roles } from 'src/user/roles.decorator';
+import { ApiResponse } from '@nestjs/swagger';
 
 
 @Controller('todo')
@@ -25,6 +26,7 @@ export class TodoController {
 
   @Get(':id')
   @Roles('user', 'admin')
+  @ApiResponse({ status: 200, description: 'Get a specific todo by ID' })
   findOne(@Param('id') id: string) {
     return this.todoService.findOne(+id);
   }
